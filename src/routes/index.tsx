@@ -8,12 +8,8 @@ const routes: RouteObject[] = [
 		element: <Layout />,
 		children: [
 			{
-				children: [
-					{
-						path: "",
-						element: <Home />,
-					},
-				],
+				path: "",
+				element: <Home />,
 			},
 		],
 	},
