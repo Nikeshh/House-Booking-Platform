@@ -9,9 +9,9 @@ const Features = () => {
 					style={{ width: 60, height: 60 }}
 				/>
 			),
-			title: "Hotels on the House",
+			title: "Comfortable Stays",
 			description:
-				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores laudantium vero quod sapiente adipisci sint perferendis ut praesentium repellat amet!",
+				"Enjoy a luxurious and comfortable stay in our well-appointed homes, tailored to meet all your needs for a perfect getaway.",
 		},
 		{
 			icon: (
@@ -20,9 +20,9 @@ const Features = () => {
 					style={{ width: 60, height: 60 }}
 				/>
 			),
-			title: "Safe to Trust",
+			title: "Secure Bookings",
 			description:
-				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores laudantium vero quod sapiente adipisci sint perferendis ut praesentium repellat amet!",
+				"Book with confidence knowing that your transactions are safe and your personal information is protected at all times.",
 		},
 		{
 			icon: (
@@ -31,9 +31,9 @@ const Features = () => {
 					style={{ width: 60, height: 60 }}
 				/>
 			),
-			title: "Worldwide Customers",
+			title: "Global Reach",
 			description:
-				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores laudantium vero quod sapiente adipisci sint perferendis ut praesentium repellat amet!",
+				"Our platform offers a wide range of properties across the globe, ensuring you find the perfect home no matter where you travel.",
 		},
 	];
 	return (
@@ -41,11 +41,10 @@ const Features = () => {
 			<div className="flex flex-col w-full items-center">
 				<span className="font-semibold text-blue-500">Our Features</span>
 				<span className="font-semibold text-slate-700 text-3xl mt-1">
-					Our Priceless Features
+					What We Offer
 				</span>
 				<p className="max-w-[400px] text-center mt-4">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure animi et quidem quis
-					quas nisi.
+					Discover the exclusive features that make our platform the best choice for booking your next home away from home.
 				</p>
 			</div>
 			<div className="flex md:flex-row flex-col w-full items-center justify-between md:gap-0 gap-5">
