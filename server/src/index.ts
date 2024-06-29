@@ -16,7 +16,7 @@ const prisma = new PrismaClient();
 app.use(cors());
 
 const corsOptions = {
-  origin: 'http://localhost:5173', // Allow specific origin
+  origin: ['http://localhost:5173', 'https://house-booking-platform.vercel.app'], // Allow specific origin
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allow specific methods
   credentials: true, // Allow cookies
   optionsSuccessStatus: 204,
