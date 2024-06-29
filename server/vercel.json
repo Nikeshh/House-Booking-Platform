@@ -14,9 +14,6 @@
       }
     }
   ],
-  "hooks": {
-    "build": "prisma generate"
-  },
   "routes": [
     {
       "src": "/(.*)",
