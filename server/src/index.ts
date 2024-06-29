@@ -25,6 +25,11 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
+// Root route
+app.get('/', (req, res) => {
+  res.send('Hello, world!');
+});
+
 export interface JwtPayload {
   userId: number;
   email: string;
