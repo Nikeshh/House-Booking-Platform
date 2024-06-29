@@ -12,7 +12,7 @@ const Footer = () => {
 					Terms and conditions
 				</a>
 				<a
-					href="#"
+					href="/cookie-policy"
 					className="font-medium whitespace-nowrap md:text-[15px] text-[10.5px] text-gray-600 hover:text-blue-600"
 				>
 					Cookie Policy
