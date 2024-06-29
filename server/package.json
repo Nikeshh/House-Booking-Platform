@@ -7,7 +7,8 @@
     "build": "npm run prisma:generate && next build",
     "start": "tsc && node dist/index.js",
     "dev": "nodemon",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
