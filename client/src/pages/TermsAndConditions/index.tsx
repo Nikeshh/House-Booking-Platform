@@ -1,5 +1,3 @@
-import React from 'react';
-
 const TermsAndConditions = () => {
 	return (
 		<div className="terms-conditions-container px-8 py-16 md:px-[200px] text-gray-800">
