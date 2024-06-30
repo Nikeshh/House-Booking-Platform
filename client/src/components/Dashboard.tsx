@@ -1,10 +1,7 @@
-function Dashboard() {
+export default function Dashboard() {
   return (
-    <div>
-      <h2 className="text-2xl mb-4">Dashboard</h2>
-      <p>Welcome to the admin panel!</p>
-    </div>
+    <>
+      <p>Dashboard page</p>
+    </>
   );
 }
-
-export default Dashboard;

@@ -1,7 +1,7 @@
 import { RouteObject } from "react-router";
 import Home from "../pages/Home";
-import Admin from "../Admin";
-import Layout from "../layout";
+import Layout from "../layouts/index.tsx";
+import AdminLayout from "../layouts/admin.tsx";
 import TermsAndConditions from "../pages/TermsAndConditions";
 import CookiePolicy from "../pages/CookiePolicy";
 import Login from "../components/Login";
@@ -24,7 +24,13 @@ const routes: RouteObject[] = [
 	},
 	{
 		path: "/admin",
-		element: <Admin />,
+		element: <AdminLayout />,
+		children: [
+			{
+				path: "",
+				element: <Dashboard />,
+			},
+		],
 	},
 	{
 		path: "/admin/login",
@@ -33,10 +39,6 @@ const routes: RouteObject[] = [
 	{
 		path: "/admin/register",
 		element: <Register />,
-	},
-	{
-		path: "/admin/dashboard",
-		element: <Dashboard />,
 	},
 	{
 		path: "/admin/users",
