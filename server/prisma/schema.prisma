@@ -8,31 +8,32 @@ datasource db {
 }
 
 model User {
-  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
   name     String
-  email    String   @unique
+  email    String    @unique
   password String
+  isAdmin  Boolean   @default(false)
   houses   House[]
   bookings Booking[]
 }
 
 model House {
-  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   description String
   location    String
   price       Float
-  owner       User @relation(fields: [ownerId], references: [id])
-  ownerId     String @db.ObjectId
+  owner       User      @relation(fields: [ownerId], references: [id])
+  ownerId     String    @db.ObjectId
   bookings    Booking[]
 }
 
 model Booking {
-  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   startDate DateTime
   endDate   DateTime
-  user      User @relation(fields: [userId], references: [id])
-  userId    String @db.ObjectId
-  house     House @relation(fields: [houseId], references: [id])
-  houseId   String @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String   @db.ObjectId
+  house     House    @relation(fields: [houseId], references: [id])
+  houseId   String   @db.ObjectId
 }

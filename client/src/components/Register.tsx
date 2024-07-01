@@ -21,8 +21,7 @@ const Register: React.FC = () => {
     }
     try {
       const response = await api.post('/api/users/register', { name, email, password });
-      localStorage.setItem('token', response.data.token);
-      navigate('/admin');
+      navigate('/admin/login');
     } catch (error) {
       console.error(error);
     }

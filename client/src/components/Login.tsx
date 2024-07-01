@@ -16,6 +16,7 @@ const Login: React.FC = () => {
     try {
       const response = await api.post('/api/users/login', { email, password });
       localStorage.setItem('token', response.data.token);
+      localStorage.setItem('isAdmin', response.data.isAdmin);
       navigate('/admin');
     } catch (error) {
       console.error(error);

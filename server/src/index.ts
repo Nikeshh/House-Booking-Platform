@@ -93,7 +93,7 @@ app.post('/api/users/login',
         secure: process.env.NODE_ENV === 'production', // Ensure to use secure flag in production
         maxAge: 3600000, // 1 hour
       });
-      res.json({ message: 'Login successful' });
+      res.json({ message: 'Login successful', token, isAdmin: user.isAdmin });
     } catch (err) {
       next(err);
     }
