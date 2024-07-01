@@ -13,8 +13,8 @@ const AdminLayout = () => {
   const [admin, setIsAdmin] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token || token == "undefined") {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (!isLoggedIn || isLoggedIn == "undefined") {
       navigate("/admin/login");
     } else if (!isAdmin()) {
       setIsAdmin(false);

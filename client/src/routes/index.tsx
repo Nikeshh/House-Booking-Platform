@@ -4,12 +4,12 @@ import Layout from "../layouts/index.tsx";
 import AdminLayout from "../layouts/admin.tsx";
 import TermsAndConditions from "../pages/TermsAndConditions";
 import CookiePolicy from "../pages/CookiePolicy";
-import Login from "../components/Login";
-import Dashboard from "../components/Dashboard";
-import Users from "../components/Users";
-import Houses from "../components/Houses";
-import Bookings from "../components/Bookings";
-import Register from "../components/Register";
+import Login from "../pages/Login.tsx";
+import Dashboard from "../pages/Dashboard.tsx";
+import Users from "../pages/Users.tsx";
+import Houses from "../pages/Houses.tsx";
+import Bookings from "../pages/Bookings.tsx";
+import Register from "../pages/Register.tsx";
 
 const routes: RouteObject[] = [
 	{

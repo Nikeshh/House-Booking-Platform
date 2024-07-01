@@ -6,14 +6,14 @@ import bcrypt from 'bcryptjs';
 import { body, validationResult } from 'express-validator';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
 const app = express();
 const prisma = new PrismaClient();
 
-// Use CORS middleware
-app.use(cors());
+app.use(cookieParser());
 
 const corsOptions = {
   origin: ['http://localhost:5173', 'https://house-booking-platform.vercel.app'], // Allow specific origin
@@ -43,10 +43,11 @@ function errorHandler(err: Error, req: Request, res: Response, next: NextFunctio
 
 // Authentication middleware
 function authenticateToken(req: Request, res: Response, next: NextFunction) {
-  const token = req.headers['authorization'];
+  const token = req.cookies.token;
+  console.log(token);
   if (!token) return res.sendStatus(401);
 
-  jwt.verify(token, process.env.JWT_SECRET as string, (err, user) => {
+  jwt.verify(token, process.env.JWT_SECRET as string, (err: any, user: any) => {
     if (err) return res.sendStatus(403);
     req.user = user as JwtPayload;
     next();
@@ -91,9 +92,10 @@ app.post('/api/users/login',
       res.cookie('token', token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production', // Ensure to use secure flag in production
-        maxAge: 3600000, // 1 hour
+        maxAge: 3600000, // 1 hour,
+        sameSite: 'lax'
       });
-      res.json({ message: 'Login successful', token, isAdmin: user.isAdmin });
+      res.json({ message: 'Login successful', isAdmin: user.isAdmin });
     } catch (err) {
       next(err);
     }

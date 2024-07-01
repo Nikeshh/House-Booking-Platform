@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
+  withCredentials: true
 });
 
 const Login: React.FC = () => {
@@ -15,9 +16,13 @@ const Login: React.FC = () => {
     e.preventDefault();
     try {
       const response = await api.post('/api/users/login', { email, password });
-      localStorage.setItem('token', response.data.token);
-      localStorage.setItem('isAdmin', response.data.isAdmin);
-      navigate('/admin');
+      if (response.data.message == "Login successful") {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('isAdmin', response.data.isAdmin);
+        navigate('/admin');
+      } else {
+        alert(response.data.message);
+      }
     } catch (error) {
       console.error(error);
     }
