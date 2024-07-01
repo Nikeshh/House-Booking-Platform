@@ -1,0 +1,1 @@
+# Stay Spot - House Booking Platform

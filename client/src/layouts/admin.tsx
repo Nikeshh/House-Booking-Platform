@@ -2,6 +2,7 @@ import { Outlet } from "react-router";
 import { useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { ModeToggle } from "@/components/global/mode-toggle";
+import Sidebar from "./_components/sidebar";
 
 const AdminLayout = () => {
 
@@ -22,6 +23,7 @@ const AdminLayout = () => {
                     </div>
                     <ModeToggle />
                 </header>
+                <Sidebar />
                 <main className="mx-4 md:pl-72 h-full pt-[80px]">
                     <Outlet />
                 </main>
