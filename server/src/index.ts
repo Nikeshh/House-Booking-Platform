@@ -44,7 +44,6 @@ function errorHandler(err: Error, req: Request, res: Response, next: NextFunctio
 // Authentication middleware
 function authenticateToken(req: Request, res: Response, next: NextFunction) {
   const token = req.cookies.token;
-  console.log(token);
   if (!token) return res.sendStatus(401);
 
   jwt.verify(token, process.env.JWT_SECRET as string, (err: any, user: any) => {
