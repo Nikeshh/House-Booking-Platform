@@ -23,16 +23,6 @@ const routes: RouteObject[] = [
 		],
 	},
 	{
-		path: "/admin",
-		element: <AdminLayout />,
-		children: [
-			{
-				path: "",
-				element: <Dashboard />,
-			},
-		],
-	},
-	{
 		path: "/admin/login",
 		element: <Login />,
 	},
@@ -41,16 +31,26 @@ const routes: RouteObject[] = [
 		element: <Register />,
 	},
 	{
-		path: "/admin/users",
-		element: <Users />,
-	},
-	{
-		path: "/admin/houses",
-		element: <Houses />,
-	},
-	{
-		path: "/admin/bookings",
-		element: <Bookings />,
+		path: "/admin",
+		element: <AdminLayout />,
+		children: [
+			{
+				path: "",
+				element: <Dashboard />,
+			},
+			{
+				path: "users",
+				element: <Users />,
+			},
+			{
+				path: "houses",
+				element: <Houses />,
+			},
+			{
+				path: "bookings",
+				element: <Bookings />,
+			},
+		],
 	},
 	{
 		path: "/terms-and-conditions",

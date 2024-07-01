@@ -1,16 +1,11 @@
-import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   Bell,
-  CircleUser,
+  BookIcon,
   Home,
-  LineChart,
-  Menu,
-  Newspaper,
-  Package,
+  House,
   Package2,
-  ShoppingCart,
-  Users,
+  User,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -20,12 +15,10 @@ const Sidebar = () => {
   const location = useLocation();
   const pathname = location.pathname;
 
-  const isCoursesPage = pathname.includes('/admin/courses');
-  const isAnalyticsPage = pathname.includes('/admin/analytics');
-  const isBlogsPage = pathname.includes('/admin/blogs');
-  const isOrdersPage = pathname.includes('/admin/orders');
-  const isCustomersPage = pathname.includes('/admin/customers');
-  const isDashboardPage = !isCoursesPage && !isAnalyticsPage && !isBlogsPage && !isOrdersPage && !isCustomersPage;
+  const isUsersPage = pathname.includes('/admin/users');
+  const isHousesPage = pathname.includes('/admin/houses');
+  const isBookingsPage = pathname.includes('/admin/bookings');
+  const isDashboardPage = !isUsersPage && !isHousesPage && !isBookingsPage;
 
   return (
     <div className="hidden fixed inset-y-0 w-72 border-r bg-muted/40 md:block">
@@ -53,37 +46,37 @@ const Sidebar = () => {
               Dashboard
             </Link>
             <Link
-              to="/admin/blogs"
+              to="/admin/users"
               className={cn(
                 'flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary',
-                isBlogsPage ? 'bg-muted  text-primary' : 'text-muted-foreground'
+                isUsersPage ? 'bg-muted  text-primary' : 'text-muted-foreground'
               )}
             >
-              <Newspaper className="h-4 w-4" />
-              Blogs
+              <User className="h-4 w-4" />
+              Users
             </Link>
             <Link
-              to="/admin/orders"
+              to="/admin/houses"
               className={cn(
                 'flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary',
-                isOrdersPage ? 'bg-muted  text-primary' : 'text-muted-foreground'
+                isHousesPage ? 'bg-muted  text-primary' : 'text-muted-foreground'
               )}
             >
-              <ShoppingCart className="h-4 w-4" />
-              Orders
+              <House className="h-4 w-4" />
+              Houses
               <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
                 6
               </Badge>
             </Link>
             <Link
-              to="/admin/customers"
+              to="/admin/bookings"
               className={cn(
                 'flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary',
-                isCustomersPage ? 'bg-muted  text-primary' : 'text-muted-foreground'
+                isBookingsPage ? 'bg-muted  text-primary' : 'text-muted-foreground'
               )}
             >
-              <Users className="h-4 w-4" />
-              Customers
+              <BookIcon className="h-4 w-4" />
+              Bookings
             </Link>
           </nav>
         </div>

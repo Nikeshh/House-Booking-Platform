@@ -2,16 +2,12 @@
 
 import { Link, useLocation } from 'react-router-dom';
 import {
-  Bell,
-  CircleUser,
+  BookIcon,
   Home,
-  LineChart,
+  House,
   Menu,
-  Newspaper,
-  Package,
   Package2,
-  ShoppingCart,
-  Users,
+  User,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -22,12 +18,10 @@ const MobileSidebar = () => {
     const location = useLocation();
     const pathname = location.pathname;
 
-    const isCoursesPage = pathname?.includes('/admin/courses')
-    const isAnalyticsPage = pathname?.includes('/admin/analytics')
-    const isBlogsPage = pathname?.includes('/admin/blogs')
-    const isOrdersPage = pathname?.includes('/admin/orders')
-    const isCustomersPage = pathname?.includes('/admin/customers')
-    const isDashboardPage = !isCoursesPage && !isAnalyticsPage && !isBlogsPage && !isOrdersPage && !isCustomersPage;
+    const isUsersPage = pathname.includes('/admin/users');
+    const isHousesPage = pathname.includes('/admin/houses');
+    const isBookingsPage = pathname.includes('/admin/bookings');
+    const isDashboardPage = !isUsersPage && !isHousesPage && !isBookingsPage;
 
     return (
         <Sheet>
@@ -48,7 +42,7 @@ const MobileSidebar = () => {
                         className="flex items-center gap-2 text-lg font-semibold"
                     >
                         <Package2 className="h-6 w-6" />
-                        <span className="sr-only">Nikeshh</span>
+                        <span className="sr-only">Stay Spot</span>
                     </Link>
                     <Link
                         to="/admin"
@@ -61,37 +55,37 @@ const MobileSidebar = () => {
                         Dashboard
                     </Link>
                     <Link
-                        to="/admin/blogs"
+                        to="/admin/users"
                         className={cn(
                             'flex items-center rounded-lg px-3 py-2 transition-all hover:text-primary',
-                            isBlogsPage ? 'gap-3 bg-muted text-primary' : 'mx-[-0.65rem] gap-4 text-muted-foreground hover:text-foreground',
+                            isUsersPage ? 'gap-3 bg-muted text-primary' : 'mx-[-0.65rem] gap-4 text-muted-foreground hover:text-foreground',
                         )}
                     >
-                        <Newspaper className="h-4 w-4" />
-                        Blogs
+                        <User className="h-4 w-4" />
+                        Users
                     </Link>
                     <Link
-                        to="/admin/orders"
+                        to="/admin/houses"
                         className={cn(
                             'flex items-center rounded-lg px-3 py-2 transition-all hover:text-primary',
-                            isOrdersPage ? 'gap-3 bg-muted text-primary' : 'mx-[-0.65rem] gap-4 text-muted-foreground hover:text-foreground',
+                            isHousesPage ? 'gap-3 bg-muted text-primary' : 'mx-[-0.65rem] gap-4 text-muted-foreground hover:text-foreground',
                         )}
                     >
-                        <ShoppingCart className="h-5 w-5" />
-                        Orders
+                        <House className="h-5 w-5" />
+                        Houses
                         <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
                         6
                         </Badge>
                     </Link>
                     <Link
-                        to="/admin/customers"
+                        to="/admin/bookings"
                         className={cn(
                             'flex items-center rounded-lg px-3 py-2 transition-all hover:text-primary',
-                            isCustomersPage ? 'gap-3 bg-muted text-primary' : 'mx-[-0.65rem] gap-4 text-muted-foreground hover:text-foreground',
+                            isBookingsPage ? 'gap-3 bg-muted text-primary' : 'mx-[-0.65rem] gap-4 text-muted-foreground hover:text-foreground',
                         )}
                     >
-                        <Users className="h-5 w-5" />
-                        Customers
+                        <BookIcon className="h-5 w-5" />
+                        Bookings
                     </Link>
                     </nav>
                 </SheetContent>
