@@ -8,11 +8,12 @@ const api = axios.create({
 });
 
 const Register: React.FC = () => {
+  const navigate = useNavigate();
+
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
-  const navigate = useNavigate();
 
   const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

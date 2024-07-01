@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 // Define the types for the house data
 interface House {
@@ -16,6 +17,8 @@ const api = axios.create({
 });
 
 const Houses: React.FC = () => {
+  const navigate = useNavigate();
+  
   const [houses, setHouses] = useState<House[]>([]);
   const [title, setTitle] = useState<string>('');
   const [location, setLocation] = useState<string>('');
@@ -32,6 +35,12 @@ const Houses: React.FC = () => {
       setHouses(response.data);
     } catch (error) {
       console.error(error);
+      if (error instanceof Error) {
+        if (error.message === 'Request failed with status code 401') {
+          alert("Unauthorized");
+          navigate("/admin/login");
+        }
+      }
     }
   };
 
@@ -46,6 +55,12 @@ const Houses: React.FC = () => {
       setPrice('');
     } catch (error) {
       console.error(error);
+      if (error instanceof Error) {
+        if (error.message === 'Request failed with status code 401') {
+          alert("Unauthorized");
+          navigate("/admin/login");
+        }
+      }
     }
   };
 
@@ -55,6 +70,12 @@ const Houses: React.FC = () => {
       fetchHouses();
     } catch (error) {
       console.error(error);
+      if (error instanceof Error) {
+        if (error.message === 'Request failed with status code 401') {
+          alert("Unauthorized");
+          navigate("/admin/login");
+        }
+      }
     }
   };
 

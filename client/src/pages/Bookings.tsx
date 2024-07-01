@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 // Define the types for the booking data
 interface Booking {
@@ -16,6 +17,8 @@ const api = axios.create({
 });
 
 const Bookings: React.FC = () => {
+  const navigate = useNavigate();
+  
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [startDate, setStartDate] = useState<string>('');
   const [endDate, setEndDate] = useState<string>('');
@@ -32,6 +35,12 @@ const Bookings: React.FC = () => {
       setBookings(response.data);
     } catch (error) {
       console.error(error);
+      if (error instanceof Error) {
+        if (error.message === 'Request failed with status code 401') {
+          alert("Unauthorized");
+          navigate("/admin/login");
+        }
+      }
     }
   };
 
@@ -46,6 +55,12 @@ const Bookings: React.FC = () => {
       setUserId('');
     } catch (error) {
       console.error(error);
+      if (error instanceof Error) {
+        if (error.message === 'Request failed with status code 401') {
+          alert("Unauthorized");
+          navigate("/admin/login");
+        }
+      }
     }
   };
 
@@ -55,6 +70,12 @@ const Bookings: React.FC = () => {
       fetchBookings();
     } catch (error) {
       console.error(error);
+      if (error instanceof Error) {
+        if (error.message === 'Request failed with status code 401') {
+          alert("Unauthorized");
+          navigate("/admin/login");
+        }
+      }
     }
   };
 

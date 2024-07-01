@@ -6,7 +6,7 @@ import TermsAndConditions from "../pages/TermsAndConditions";
 import CookiePolicy from "../pages/CookiePolicy";
 import Login from "../pages/Login.tsx";
 import Dashboard from "../pages/Dashboard.tsx";
-import Users from "../pages/Users.tsx";
+import Users from "../pages/users";
 import Houses from "../pages/Houses.tsx";
 import Bookings from "../pages/Bookings.tsx";
 import Register from "../pages/Register.tsx";

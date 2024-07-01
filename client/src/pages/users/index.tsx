@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { columns } from './_components/columns'
 import { DataTable } from './_components/data-table'
+import { useNavigate } from "react-router-dom";
 
 export interface User {
   id: number;
@@ -15,10 +16,9 @@ const api = axios.create({
 });
 
 const Users: React.FC = () => {
+  const navigate = useNavigate();
+
   const [users, setUsers] = useState<User[]>([]);
-  const [name, setName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
 
   useEffect(() => {
     fetchUsers();
@@ -30,23 +30,19 @@ const Users: React.FC = () => {
       setUsers(response.data);
     } catch (error) {
       console.error(error);
-    }
-  };
-
-  const handleCreateUser = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      await api.post('/api/users', { name, email, password });
-      fetchUsers();
-    } catch (error) {
-      console.error(error);
+      if (error instanceof Error) {
+        if (error.message === 'Request failed with status code 401') {
+          alert("Unauthorized");
+          navigate("/admin/login");
+        }
+      }
     }
   };
 
   return (
     <div className="p-6">
       <h2 className="text-2xl mb-4">Users</h2>
-      <DataTable columns={columns} data={users} />
+      <DataTable columns={columns} data={users} fetchData={fetchUsers} />
     </div>
   );
 }

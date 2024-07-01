@@ -8,9 +8,10 @@ const api = axios.create({
 });
 
 const Login: React.FC = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

@@ -75,6 +75,27 @@ app.post('/api/users/register',
     }
 });
 
+app.post('/api/users', 
+  body('email').isEmail(), 
+  body('password').isLength({ min: 6 }), 
+  async (req: Request, res: Response, next: NextFunction) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    const { name, email, password } = req.body;
+    try {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const user = await prisma.user.create({
+        data: { name, email, password: hashedPassword },
+      });
+      res.status(201).json(user);
+    } catch (err) {
+      next(err);
+    }
+});
+
 app.post('/api/users/login', 
   body('email').isEmail(), 
   body('password').exists(), 

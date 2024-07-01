@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ColumnDef } from '@tanstack/react-table';
-import { ArrowUpDown, MoreHorizontal, Pencil, X } from 'lucide-react';
+import { ArrowUpDown, MoreHorizontal, Pencil, PencilIcon, Trash2, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
 } from '@/components/ui/dropdown-menu';
-import { User } from '../Users';
+import { User } from '../';
 
 export const columns: ColumnDef<User>[] = [
   {
@@ -92,12 +92,14 @@ export const columns: ColumnDef<User>[] = [
           </DropdownMenuTrigger>
 
           <DropdownMenuContent align="end">
-            <Link to={`/admin/blogs/${id}`}>
-              <DropdownMenuItem className="cursor-pointer">
-                <Pencil className="w-4 h-4 mr-2" />
-                Edit
-              </DropdownMenuItem>
-            </Link>
+            <DropdownMenuItem className="cursor-pointer">
+              <PencilIcon className="w-4 h-4 mr-2" />
+              Edit
+            </DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
+              <Trash2 className="w-4 h-4 mr-2" />
+              Delete
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
